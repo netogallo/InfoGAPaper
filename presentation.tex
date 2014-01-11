@@ -1,5 +1,4 @@
 \documentclass{beamer}
-\usepackage{cite}
 \usepackage{graphicx}
 \usepackage{algorithm2e}
 \usepackage{multicol}
@@ -32,7 +31,7 @@
 \frametitle{Previous Approaches}
 \begin{itemize}
 \item {\bf Greedy Constructive Methods:} Succesively choose a vertex and a color such that the independent property holds according to some criteria. Poor performance in general.
-\item {\bf Genetic Algorithm:} Ordering of vertices encoded as a coloring and use a GA to optimize. Davis tested it in \cite{DavisGA} with poor results.
+\item {\bf Genetic Algorithm:} Ordering of vertices encoded as a coloring and use a GA to optimize. No good performance.
 \item {\bf Local Search:} Use simulating annealing or tabu search. Differ from each other in the way they define a neighborhood, cost function and search space. State of the art!
 \end{itemize}
 \end{frame}
@@ -118,27 +117,57 @@ Assign randomly the vertices of $V\ -\ (V_1\ \cup ... \cup\ V_k)$\;
 \item A neighbor is obtained by moving a vertex to another color class
 \item A vertex is only moved if it conflicts with other vertex
 \item A tabu move which performs better than the best configuration is always accepted
-\item The search is repeated for a specific number of iterations
+\item The search is repeated for a specific number of iterations $L$
 
 \end{itemize}
 
 \end{frame}
 
 \begin{frame}
-\frametitle{Comparison with Taboo Search}
-\centering{
-\includegraphics[height=200px]{results1.png}
-}
-
+\frametitle{Runnng Profile}
+\centering{\includegraphics[height=140px]{runProf.png}}
+\begin{itemize}
+\item {\bf Running Profile:} The best coloring found after a particular number of iterations
+\item When $L$ is 500 and 1000, best solution is not found; with 2000 and 4000 best solution is found
+\item When $L$ is larger, the search progresses more slowly.
+\end{itemize}
 \end{frame}
 
 \begin{frame}
-
-\frametitle{Results}
-\centering{
-\includegraphics[height=160px]{results2.png}
-}
-
+\frametitle{Diversity}
+\centering{\includegraphics[height=140px]{div.png}}
+\begin{itemize}
+\item {\bf Difference Function:} Number of transformations to convert one coloring into another 
+\item Longer local search sets the children far away from the parents
+\end{itemize}
 \end{frame}
+
+
+%% \begin{frame}
+%% \frametitle{Comparison with Tabu Search}
+%% \centering{
+%% \includegraphics[height=200px]{results1.png}
+%% }
+
+%% \end{frame}
+
+%% \begin{frame}
+
+%% \frametitle{Results}
+%% \centering{
+%% \includegraphics[height=160px]{results2.png}
+%% }
+
+%% \end{frame}
+
+\begin{frame}
+\frametitle{Conclusions}
+%Not completed
+\begin{itemize}
+\item A domain specific crossover operator is necessary
+\item Longer local search is necessary for difficult problems
+% \item
+\end{itemize}
+\end{frame} 
 
 \end{document}
